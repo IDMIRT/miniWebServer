@@ -18,6 +18,16 @@ class WebHandler(BaseRequestHandler):
         # self.request.send(HDRS.dataencode('utf-8')+content.encode('utf-8'))
         self.request.send(return_data)
 
+def hdrs(status_line):
+    http = 'HTTP/1.1'
+    status_query =' '.join([status_line,'OK'])
+    return ''.join([http,status_query,'\r\n'])
+     
+          
+          
+          
+
+
 def return_page_query(data):
      parsing_string = data.split('\r\n')
      first_head = parsing_string[0]
@@ -28,7 +38,7 @@ def return_page_query(data):
 def ReturnPageWithHTTPRequest(data):
     HDRS = 'HTTP/1.1 200 OK \r\nContent-Type: text\html; charset=utf-8\r\n\r\n'
     page = return_page_query(data)
-    if page == '\\':
+    if page == '/':
         with open('pages/index.html','r+', encoding='utf-8') as new_page:
                 content = new_page.read()
     return HDRS.encode('utf-8')+content.encode('utf-8')
