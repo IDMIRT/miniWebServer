@@ -13,8 +13,7 @@ def start_new_connection_answer(conn, host):
         print(f'{host} подключился')
         print('Получены данные',data.decode('utf-8'))
         HDRS = 'HTTP/1.1 200 OK \r\nContent-Type: text\html; charset=utf-8\r\n\r\n'
-        # content = '<html lang="ru"> <head> <meta charset="UTF-8"></head><p>Тестовая страница</p> </html>'
-        content = '<html lang="ru"> <p>Тестовая страница</p> </html>'
+        content = '<html lang="ru"> <head> <meta charset="UTF-8"></head><p>Тестовая страница</p> </html>'
         # conn.send(HDRS.encode('utf-8')+content.encode('utf-8')) 
         conn.send(HDRS.encode('utf-8')+content.encode('utf-8'))
     conn.close()
